@@ -1,4 +1,4 @@
-package pl.dzielins42.urbanbear.building.model;
+package pl.dzielins42.dmtools.calculator.building.model;
 
 import java.util.Map;
 import java.util.NavigableMap;

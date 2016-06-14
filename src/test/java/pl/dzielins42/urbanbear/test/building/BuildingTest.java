@@ -9,16 +9,16 @@ import java.util.TreeMap;
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.Table;
 
-import pl.dzielins42.urbanbear.building.model.BaseBuildingTablesManager;
-import pl.dzielins42.urbanbear.building.model.BuildingConstructionDetails;
-import pl.dzielins42.urbanbear.building.model.BuildingCostCalculator;
-import pl.dzielins42.urbanbear.building.model.BuildingTablesManager;
-import pl.dzielins42.urbanbear.building.model.Material;
-import pl.dzielins42.urbanbear.building.model.Section;
-import pl.dzielins42.urbanbear.building.model.StructuralComponent;
-import pl.dzielins42.urbanbear.building.model.StructureType;
-import pl.dzielins42.urbanbear.building.model.Style;
-import pl.dzielins42.urbanbear.building.model.StyleType;
+import pl.dzielins42.dmtools.calculator.building.model.BaseBuildingTablesManager;
+import pl.dzielins42.dmtools.calculator.building.model.BuildingConstructionDetails;
+import pl.dzielins42.dmtools.calculator.building.model.BuildingCostCalculator;
+import pl.dzielins42.dmtools.calculator.building.model.BuildingTablesManager;
+import pl.dzielins42.dmtools.calculator.building.model.Material;
+import pl.dzielins42.dmtools.calculator.building.model.Section;
+import pl.dzielins42.dmtools.calculator.building.model.StructuralComponent;
+import pl.dzielins42.dmtools.calculator.building.model.StructureType;
+import pl.dzielins42.dmtools.calculator.building.model.Style;
+import pl.dzielins42.dmtools.calculator.building.model.StyleType;
 
 public class BuildingTest {
 
