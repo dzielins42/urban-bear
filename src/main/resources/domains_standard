@@ -1,0 +1,420 @@
+[
+  {
+    "name": "Air",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Animal",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Chaos",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.0008312551953, 0.0008312551953, 0.0008312551953, 0.08312551953, 0.08312551953, 0.08312551953, 0.2493765586, 0.2493765586, 0.2493765586
+      ]
+    }
+  },
+  {
+    "name": "Death",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Destruction",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Earth",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Evil",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.0008312551953, 0.08312551953, 0.2493765586, 0.0008312551953, 0.08312551953, 0.2493765586, 0.0008312551953, 0.08312551953, 0.2493765586
+      ]
+    }
+  },
+  {
+    "name": "Fire",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Good",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.2493765586, 0.08312551953, 0.0008312551953, 0.2493765586, 0.08312551953, 0.0008312551953, 0.2493765586, 0.08312551953, 0.0008312551953
+      ]
+    }
+  },
+  {
+    "name": "Healing",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Knowledge",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Law",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.2493765586, 0.2493765586, 0.2493765586, 0.08312551953, 0.08312551953, 0.08312551953, 0.0008312551953, 0.0008312551953, 0.0008312551953
+      ]
+    }
+  },
+  {
+    "name": "Luck",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Magic",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Plant",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Protection",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Strength",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Sun",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Travel",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Trickery",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "War",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  },
+  {
+    "name": "Water",
+    "alignmentProbabilities": {
+      "elements": [
+        "LAWFUL_GOOD",
+        "LAWFUL_NEUTRAL",
+        "LAWFUL_EVIL",
+        "NEUTRAL_GOOD",
+        "NEUTRAL_NEUTRAL",
+        "NEUTRAL_EVIL",
+        "CHAOTIC_GOOD",
+        "CHAOTIC_NEUTRAL",
+        "CHAOTIC_EVIL"
+      ],
+      "probabilities": [
+        0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111, 0.1111111111
+      ]
+    }
+  }
+]

@@ -1,6 +1,5 @@
 package pl.dzielins42.dmtools.model.religion;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.base.Joiner;
@@ -8,13 +7,26 @@ import com.google.common.base.Joiner;
 import pl.dzielins42.dmtools.model.Alignment;
 import pl.dzielins42.dmtools.model.Gender;
 
+/**
+ * Represents single deity in a religious system.
+ */
 public class Deity {
 
+    /**
+     * Name of the deity.
+     */
     private String name;
+    /**
+     * {@link Alignment} of the deity.
+     */
     private Alignment alignment;
+    /**
+     * {@link Gender} of the deity.
+     */
     private Gender gender;
     /**
-     * Determines how much power the deity has.
+     * Determines how much power the deity has. The bigger the value, the more
+     * powerful the deity is.
      */
     private byte divineRank;
     private List<Domain> domains;
@@ -32,20 +44,40 @@ public class Deity {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Alignment getAlignment() {
         return alignment;
+    }
+
+    public void setAlignment(Alignment alignment) {
+        this.alignment = alignment;
     }
 
     public Gender getGender() {
         return gender;
     }
 
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public byte getDivineRank() {
         return divineRank;
     }
 
+    public void setDivineRank(byte divineRank) {
+        this.divineRank = divineRank;
+    }
+
     public List<Domain> getDomains() {
         return domains;
+    }
+
+    public void setDomains(List<Domain> domains) {
+        this.domains = domains;
     }
 
     public String toPrettyString() {
@@ -78,12 +110,18 @@ public class Deity {
     private String domainsToPrettyString() {
         if (domains == null || domains.isEmpty()) {
             return null;
-        } else if (domains.size() == 1) {
-            return String.valueOf(domains.get(0)).toLowerCase();
         } else {
-            List<Domain> temp = new ArrayList<Domain>(domains);
-            return Joiner.on(", ").join(temp.subList(0, temp.size() - 1)).concat(" and ")
-                    .concat(String.valueOf(temp.get(temp.size() - 1))).toLowerCase();
+            if (domains.size() == 1) {
+                return domains.get(0).getName();
+            } else {
+                int s = domains.size() - 1;
+                String[] n = new String[s];
+                for (int i = 0; i < s; i++) {
+                    n[i] = domains.get(i).getName();
+                }
+
+                return Joiner.on(", ").join(n).concat(" and ").concat(domains.get(s).getName());
+            }
         }
     }
 
@@ -102,7 +140,7 @@ public class Deity {
         case LAWFUL_NEUTRAL:
             return "lawful neutral";
         case NEUTRAL_EVIL:
-            return "neutral evli";
+            return "neutral evil";
         case NEUTRAL_GOOD:
             return "neutral good";
         case NEUTRAL_NEUTRAL:
