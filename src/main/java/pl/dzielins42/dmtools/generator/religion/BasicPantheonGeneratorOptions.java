@@ -1,6 +1,7 @@
 package pl.dzielins42.dmtools.generator.religion;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
+import pl.dzielins42.dmtools.generator.name.CharacterNameGenerator;
 import pl.dzielins42.dmtools.generator.name.NameGenerator;
 import pl.dzielins42.dmtools.model.religion.Domain;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
@@ -11,24 +12,26 @@ public class BasicPantheonGeneratorOptions extends GeneratorOptions {
     private int minDeitiesNumber;
     private int maxDeitiesNumber;
     private ProbabilityDistributionTable<Domain> domainsProbability;
-    private NameGenerator nameGenerator;
+    private CharacterNameGenerator nameGenerator;
 
-    public BasicPantheonGeneratorOptions(RandomGenerator random, ProbabilityDistributionTable<Domain> domainsProbability,NameGenerator nameGenerator) {
-        this(random, 1, Byte.MAX_VALUE, domainsProbability,nameGenerator);
+    public BasicPantheonGeneratorOptions(RandomGenerator random, ProbabilityDistributionTable<Domain> domainsProbability,
+            CharacterNameGenerator nameGenerator) {
+        this(random, 1, Byte.MAX_VALUE, domainsProbability, nameGenerator);
     }
 
     public BasicPantheonGeneratorOptions(RandomGenerator random, int minDeitiesNumber, int maxDeitiesNumber,
-            ProbabilityDistributionTable<Domain> domainsProbability,NameGenerator nameGenerator) {
+            ProbabilityDistributionTable<Domain> domainsProbability, CharacterNameGenerator nameGenerator) {
         super(random);
 
-        if (minDeitiesNumber < 0 || maxDeitiesNumber < 0 || minDeitiesNumber > maxDeitiesNumber || domainsProbability == null||nameGenerator==null) {
+        if (minDeitiesNumber < 0 || maxDeitiesNumber < 0 || minDeitiesNumber > maxDeitiesNumber || domainsProbability == null
+                || nameGenerator == null) {
             throw new IllegalArgumentException();
         }
 
         this.maxDeitiesNumber = maxDeitiesNumber;
         this.minDeitiesNumber = minDeitiesNumber;
         this.domainsProbability = domainsProbability;
-        this.nameGenerator=nameGenerator;
+        this.nameGenerator = nameGenerator;
     }
 
     public int getMaxDeitiesNumber() {
@@ -59,11 +62,11 @@ public class BasicPantheonGeneratorOptions extends GeneratorOptions {
         return getDomainsProbability().getElements();
     }
 
-    public NameGenerator getNameGenerator() {
+    public CharacterNameGenerator getNameGenerator() {
         return nameGenerator;
     }
 
-    public void setNameGenerator(NameGenerator nameGenerator) {
+    public void setNameGenerator(CharacterNameGenerator nameGenerator) {
         this.nameGenerator = nameGenerator;
     }
 

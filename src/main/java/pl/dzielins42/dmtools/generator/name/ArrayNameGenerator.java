@@ -1,7 +1,5 @@
 package pl.dzielins42.dmtools.generator.name;
 
-import java.util.EnumMap;
-
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
 import pl.dzielins42.dmtools.model.Gender;
 
@@ -11,27 +9,20 @@ import pl.dzielins42.dmtools.model.Gender;
  */
 public class ArrayNameGenerator implements NameGenerator {
 
-    private EnumMap<Gender, String[]> arrays;
+    private String[] array;
 
-    public ArrayNameGenerator(String[] male, String[] female, String[] other) {
+    public ArrayNameGenerator(String[] array) {
         super();
-        this.arrays = new EnumMap<>(Gender.class);
-        this.arrays.put(Gender.MALE, male);
-        this.arrays.put(Gender.FEMALE, female);
-        this.arrays.put(Gender.OTHER, other);
-    }
 
-    public ArrayNameGenerator(EnumMap<Gender, String[]> map) {
-        super();
-        this.arrays = map;
+        if (array == null || array.length <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        this.array = array;
     }
-    
-    public EnumMap<Gender, String[]> get(){return arrays;}
 
     @Override
-    public String generate(Gender gender, GeneratorOptions options) {
-        String[] array = arrays.get(gender);
-
+    public String generate(GeneratorOptions options) {
         if (array == null || array.length <= 0) {
             return null;
         }

@@ -7,6 +7,11 @@ public class GeneratorOptions {
 
     public GeneratorOptions(RandomGenerator random) {
         super();
+
+        if (random == null) {
+            throw new IllegalArgumentException();
+        }
+
         this.random = random;
     }
 
@@ -15,7 +20,35 @@ public class GeneratorOptions {
     }
 
     public void setRandom(RandomGenerator random) {
+        if (random == null) {
+            throw new IllegalArgumentException();
+        }
+
         this.random = random;
+    }
+
+    public boolean nextBoolean() {
+        return random.nextBoolean();
+    }
+
+    public double nextDouble() {
+        return random.nextDouble();
+    }
+
+    public float nextFloat() {
+        return random.nextFloat();
+    }
+
+    public int nextInt() {
+        return random.nextInt();
+    }
+
+    public int nextInt(int bound) {
+        return random.nextInt(bound);
+    }
+
+    public long nextLong() {
+        return random.nextLong();
     }
 
 }
