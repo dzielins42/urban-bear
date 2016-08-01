@@ -1,0 +1,10 @@
+{
+   "THORP":0.05,
+   "HAMLET":0.05,
+   "VILLAGE":0.10,
+   "SMALL_TOWN":0.15,
+   "LARGE_TOWN":0.20,
+   "SMALL_CITY":0.25,
+   "LARGE_CITY":0.30,
+   "METROPOLIS":0.30
+}

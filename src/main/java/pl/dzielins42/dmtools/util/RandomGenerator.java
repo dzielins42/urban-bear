@@ -14,4 +14,6 @@ public interface RandomGenerator {
 
     long nextLong();
 
+    double nextGaussian();
+
 }

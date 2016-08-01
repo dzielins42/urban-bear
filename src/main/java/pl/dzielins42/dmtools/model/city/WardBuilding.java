@@ -1,7 +1,9 @@
-package pl.dzielins42.dmtools.generator.city.model;
+package pl.dzielins42.dmtools.model.city;
+
+import pl.dzielins42.dmtools.util.data.Tuple;
 
 public class WardBuilding {
-    
+
     private Style style;
     private Type type;
 
@@ -54,6 +56,14 @@ public class WardBuilding {
         WAREHOUSE,
         WELL,
         WORKSHOP;
+    }
+
+    public static class TypeStyleTuple extends Tuple<Type, Style> {
+
+        public TypeStyleTuple(Type first, Style second) {
+            super(first, second);
+        }
+
     }
 
 }

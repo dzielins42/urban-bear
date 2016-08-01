@@ -42,4 +42,8 @@ public class RandomAdapter implements RandomGenerator {
         return random.nextLong();
     }
 
+    public double nextGaussian() {
+        return random.nextGaussian();
+    }
+
 }

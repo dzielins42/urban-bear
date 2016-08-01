@@ -3,6 +3,7 @@ package pl.dzielins42.dmtools.generator;
 import pl.dzielins42.dmtools.util.RandomGenerator;
 
 public class GeneratorOptions {
+
     private RandomGenerator random;
 
     public GeneratorOptions(RandomGenerator random) {
@@ -49,6 +50,10 @@ public class GeneratorOptions {
 
     public long nextLong() {
         return random.nextLong();
+    }
+
+    public double nextGaussian() {
+        return random.nextGaussian();
     }
 
 }

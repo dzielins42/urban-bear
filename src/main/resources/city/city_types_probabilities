@@ -1,0 +1,22 @@
+{
+   "elements":[
+      "THORP",
+      "HAMLET",
+      "VILLAGE",
+      "SMALL_TOWN",
+      "LARGE_TOWN",
+      "SMALL_CITY",
+      "LARGE_CITY",
+      "METROPOLIS"
+   ],
+   "probabilities":[
+      0.10,
+      0.20,
+      0.20,
+      0.20,
+      0.15,
+      0.10,
+      0.04,
+      0.01
+   ]
+}
