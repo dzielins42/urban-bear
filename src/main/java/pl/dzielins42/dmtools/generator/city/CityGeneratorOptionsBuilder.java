@@ -13,12 +13,14 @@ import com.google.common.collect.Table;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
+import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.Ward;
 import pl.dzielins42.dmtools.model.city.WardBuilding;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 import pl.dzielins42.dmtools.util.RandomGenerator;
 import pl.dzielins42.dmtools.util.data.IntMinMaxValues;
+import pl.dzielins42.dmtools.util.data.IntProbabilityDistributionTable;
 
 public class CityGeneratorOptionsBuilder {
 
@@ -30,6 +32,7 @@ public class CityGeneratorOptionsBuilder {
     private EnumMap<City.Type, Double> cityTypesGpLimits;
     private EnumMap<City.Type, Double> cityTypesUnabsorbedInfluencePoints;
     private EnumMap<City.Type, Double> cityTypesMagicalResources;
+    private Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics;
 
     public CityGeneratorOptions build() {
         // Validate
@@ -47,6 +50,7 @@ public class CityGeneratorOptionsBuilder {
         cgo.setCityTypesGpLimits(cityTypesGpLimits);
         cgo.setCityTypesUnabsorbedInfluencePoints(cityTypesUnabsorbedInfluencePoints);
         cgo.setCityTypesMagicalResources(cityTypesMagicalResources);
+        cgo.setCityDemographics(cityDemographics);
 
         return cgo;
     }
@@ -333,6 +337,47 @@ public class CityGeneratorOptionsBuilder {
 
         if (em != null) {
             setCityTypesMagicalResources(em);
+        }
+    }
+
+    public void setCityDemographics(Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics) {
+        this.cityDemographics = cityDemographics;
+    }
+
+    public void loadCityDemographics(File file) {
+        if (file == null) {
+            throw new IllegalArgumentException();
+        }
+
+        FileReader fr = null;
+        Table<City.Type, CharacterClass, IntProbabilityDistributionTable> t = null;
+        try {
+            Gson gson = new Gson();
+            fr = new FileReader(file);
+            IntProbabilityDistributionTable[][] a;
+            a = gson.fromJson(fr, IntProbabilityDistributionTable[][].class);
+            if (a != null) {
+                t = ArrayTable.create(Arrays.asList(City.Type.values()), Arrays.asList(CharacterClass.values()));
+                for (City.Type ct : City.Type.values()) {
+                    for (CharacterClass cc : CharacterClass.values()) {
+                        t.put(ct, cc, a[ct.ordinal()][cc.ordinal()]);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (t != null) {
+            setCityDemographics(t);
         }
     }
 

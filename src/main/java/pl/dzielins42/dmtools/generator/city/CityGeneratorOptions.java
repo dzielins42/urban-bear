@@ -5,12 +5,14 @@ import java.util.EnumMap;
 import com.google.common.collect.Table;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
+import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.Ward;
 import pl.dzielins42.dmtools.model.city.WardBuilding;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 import pl.dzielins42.dmtools.util.RandomGenerator;
 import pl.dzielins42.dmtools.util.data.IntMinMaxValues;
+import pl.dzielins42.dmtools.util.data.IntProbabilityDistributionTable;
 
 public class CityGeneratorOptions extends GeneratorOptions {
 
@@ -21,6 +23,7 @@ public class CityGeneratorOptions extends GeneratorOptions {
     private EnumMap<City.Type, Double> cityTypesGpLimits;
     private EnumMap<City.Type, Double> cityTypesUnabsorbedInfluencePoints;
     private EnumMap<City.Type, Double> cityTypesMagicalResources;
+    private Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics;
 
     public CityGeneratorOptions(RandomGenerator random) {
         super(random);
@@ -66,7 +69,7 @@ public class CityGeneratorOptions extends GeneratorOptions {
     public void setCityTypesGpLimits(EnumMap<City.Type, Double> cityTypesGpLimits) {
         this.cityTypesGpLimits = cityTypesGpLimits;
     }
-    
+
     public EnumMap<City.Type, Double> getCityTypesUnabsorbedInfluencePoints() {
         return cityTypesUnabsorbedInfluencePoints;
     }
@@ -106,9 +109,19 @@ public class CityGeneratorOptions extends GeneratorOptions {
     public double getUnabsorbedInfluencePoints(City.Type cityType) {
         return getCityTypesUnabsorbedInfluencePoints().get(cityType);
     }
-    
+
     public double getMagicalResources(City.Type cityType) {
         return getCityTypesMagicalResources().get(cityType);
     }
+
+    public Table<City.Type, CharacterClass, IntProbabilityDistributionTable> getCityDemographics() {
+        return cityDemographics;
+    }
+
+    public void setCityDemographics(Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics) {
+        this.cityDemographics = cityDemographics;
+    }
+
+    // TODO common barbarian, monk classes
 
 }
