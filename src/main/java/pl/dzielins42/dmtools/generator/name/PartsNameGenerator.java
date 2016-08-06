@@ -24,8 +24,8 @@ public class PartsNameGenerator implements NameGenerator {
     }
 
     @Override
-    public int getPossibilitiesCount() {
-        int sum = 1;
+    public long getPossibilitiesCount() {
+        long sum = 1;
 
         for (int i = 0; i < arrays.length; i++) {
             sum *= arrays[i].length;

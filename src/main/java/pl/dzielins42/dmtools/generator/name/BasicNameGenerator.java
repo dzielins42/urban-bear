@@ -20,7 +20,7 @@ public class BasicNameGenerator implements NameGenerator {
     }
 
     @Override
-    public int getPossibilitiesCount() {
+    public long getPossibilitiesCount() {
         return names.length;
     }
 

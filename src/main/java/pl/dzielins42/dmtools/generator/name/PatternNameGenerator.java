@@ -35,11 +35,11 @@ public class PatternNameGenerator implements NameGenerator {
     }
 
     @Override
-    public int getPossibilitiesCount() {
-        int sum = 0;
+    public long getPossibilitiesCount() {
+        long sum = 0;
 
         for (int i = 0; i < patterns.length; i++) {
-            int subSum = 1;
+            long subSum = 1;
             for (int j = 0; j < patterns[i].length; j++) {
                 if (patterns[i][j] >= 0) {
                     subSum *= arrays[patterns[i][j]].length;

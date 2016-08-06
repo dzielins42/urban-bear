@@ -43,8 +43,8 @@ public class CharacterNameGenerator implements GeneratorStatistics {
     }
 
     @Override
-    public int getPossibilitiesCount() {
-        int sum = 0;
+    public long getPossibilitiesCount() {
+        long sum = 0;
 
         if (generators != null && !generators.isEmpty()) {
             for (Gender g : Gender.values()) {

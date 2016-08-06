@@ -4,5 +4,5 @@ public interface GeneratorStatistics {
     
     public static final int UNKNOWN = -1;
     
-    int getPossibilitiesCount();
+    long getPossibilitiesCount();
 }

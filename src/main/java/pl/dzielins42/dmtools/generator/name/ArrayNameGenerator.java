@@ -31,7 +31,7 @@ public class ArrayNameGenerator implements NameGenerator {
     }
 
     @Override
-    public int getPossibilitiesCount() {
+    public long getPossibilitiesCount() {
         return array.length;
     }
 
