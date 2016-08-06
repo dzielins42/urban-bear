@@ -19,4 +19,9 @@ public class BasicNameGenerator implements NameGenerator {
         return name;
     }
 
+    @Override
+    public int getPossibilitiesCount() {
+        return names.length;
+    }
+
 }

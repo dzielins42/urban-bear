@@ -30,4 +30,9 @@ public class ArrayNameGenerator implements NameGenerator {
         return array[options.getRandom().nextInt(array.length)];
     }
 
+    @Override
+    public int getPossibilitiesCount() {
+        return array.length;
+    }
+
 }

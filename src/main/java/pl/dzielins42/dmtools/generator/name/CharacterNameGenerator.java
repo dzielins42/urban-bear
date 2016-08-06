@@ -3,9 +3,10 @@ package pl.dzielins42.dmtools.generator.name;
 import java.util.EnumMap;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
+import pl.dzielins42.dmtools.generator.GeneratorStatistics;
 import pl.dzielins42.dmtools.model.Gender;
 
-public class CharacterNameGenerator {
+public class CharacterNameGenerator implements GeneratorStatistics {
 
     private EnumMap<Gender, NameGenerator> generators;
 
@@ -39,6 +40,21 @@ public class CharacterNameGenerator {
         }
 
         return generator.generate(options);
+    }
+
+    @Override
+    public int getPossibilitiesCount() {
+        int sum = 0;
+
+        if (generators != null && !generators.isEmpty()) {
+            for (Gender g : Gender.values()) {
+                if (generators.get(g) != null) {
+                    sum += generators.get(g).getPossibilitiesCount();
+                }
+            }
+        }
+
+        return sum;
     }
 
 }

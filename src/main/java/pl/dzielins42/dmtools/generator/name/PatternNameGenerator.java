@@ -3,7 +3,7 @@ package pl.dzielins42.dmtools.generator.name;
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
 
 public class PatternNameGenerator implements NameGenerator {
-    
+
     public static final int SPACE = -1;
 
     private int[][] patterns;
@@ -32,6 +32,23 @@ public class PatternNameGenerator implements NameGenerator {
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public int getPossibilitiesCount() {
+        int sum = 0;
+
+        for (int i = 0; i < patterns.length; i++) {
+            int subSum = 1;
+            for (int j = 0; j < patterns[i].length; j++) {
+                if (patterns[i][j] >= 0) {
+                    subSum *= arrays[patterns[i][j]].length;
+                }
+            }
+            sum += subSum;
+        }
+
+        return sum;
     }
 
 }
