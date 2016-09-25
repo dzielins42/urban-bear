@@ -5,14 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import pl.dzielins42.dmtools.model.city.City;
+import pl.dzielins42.dmtools.model.city.CityDemographics;
 import pl.dzielins42.dmtools.model.city.Ward;
 
 public class CityGenerator {
 
     private WardGenerator wardGenerator;
+    private CityDemographicsGenerator cityDemographicsGenerator;
 
-    public CityGenerator(WardGenerator wardGenerator) {
+    public CityGenerator(WardGenerator wardGenerator, CityDemographicsGenerator cityDemographicsGenerator) {
+        super();
         this.wardGenerator = wardGenerator;
+        this.cityDemographicsGenerator = cityDemographicsGenerator;
     }
 
     public City generate(CityGeneratorOptions options) {
@@ -46,11 +50,13 @@ public class CityGenerator {
         for (int i = 0; i < wardsAreas.length; i++) {
             wards.add(wardGenerator.generate(wardsAreas[i], cityType, options));
         }
+        // Get demographics
+        CityDemographics demographics = cityDemographicsGenerator.generate(cityType, population, options);
         // Get power centers
         // Get influence points
         // TODO need to generate demographics first
 
-        return new City(cityType, population, area, wards, gpLimit, magicalResources);
+        return new City(cityType, population, area, wards, gpLimit, magicalResources, demographics);
     }
 
     private double getGpLimit(City.Type cityType, CityGeneratorOptions options) {
@@ -64,7 +70,7 @@ public class CityGenerator {
         double base = options.getMagicalResources(cityType);
         double deviation = options.nextGaussian() * 0.1d;
 
-        return base + (deviation * base);
+        return base * (deviation + 1);
     }
 
     private double[] assignAreasToWards(double cityArea, City.Type cityType, CityGeneratorOptions options) {

@@ -9,9 +9,14 @@ public class City {
     private double area;
     private List<Ward> wards;
     private double gpLimit;
+    /**
+     * % of wealth that is magical
+     */
     private double magicalResources;
+    private CityDemographics demographics;
 
-    public City(Type type, int population, double area, List<Ward> wards, double gpLimit, double magicalResources) {
+    public City(Type type, int population, double area, List<Ward> wards, double gpLimit, double magicalResources,
+            CityDemographics demographics) {
         super();
         this.type = type;
         this.population = population;
@@ -19,6 +24,7 @@ public class City {
         this.wards = wards;
         this.gpLimit = gpLimit;
         this.magicalResources = magicalResources;
+        this.demographics = demographics;
     }
 
     public Type getType() {
@@ -69,10 +75,18 @@ public class City {
         this.magicalResources = magicalResources;
     }
 
+    public CityDemographics getDemographics() {
+        return demographics;
+    }
+
+    public void setDemographics(CityDemographics demographics) {
+        this.demographics = demographics;
+    }
+
     @Override
     public String toString() {
-        return "City [type=" + type + ", population=" + population + ", area=" + area + ", gpLimit=" + gpLimit
-                + ", magicalResources=" + magicalResources + ", wards=" + wards + "]";
+        return "City [type=" + type + ", population=" + population + ", area=" + area + ", wards=" + wards + ", gpLimit="
+                + gpLimit + ", magicalResources=" + magicalResources + ", demographics=" + demographics + "]";
     }
 
     public double getWealth() {

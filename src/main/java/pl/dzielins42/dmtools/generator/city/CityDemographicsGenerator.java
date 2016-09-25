@@ -28,7 +28,6 @@ public class CityDemographicsGenerator {
         Table<CharacterClass, Integer, Integer> demographics = HashBasedTable.create();
 
         int remainingPopulation = population;
-        int assignedPopulation = 0;
 
         // For each class generate highest level NPCs
         int maxLvl = 0;
@@ -42,7 +41,6 @@ public class CityDemographicsGenerator {
                     if (lvl > 0) {
                         addToTable(demographics, cc, lvl, 1);
                         remainingPopulation--;
-                        assignedPopulation++;
                         maxLvl = (lvl > maxLvl) ? lvl : maxLvl;
                     }
                 }
@@ -75,7 +73,6 @@ public class CityDemographicsGenerator {
                             }
                             addToTable(demographics, cc, newLvl, 1);
                             remainingPopulation--;
-                            assignedPopulation++;
                         }
                     }
                 }
