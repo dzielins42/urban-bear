@@ -1,9 +1,12 @@
 package pl.dzielins42.dmtools.util;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -55,17 +58,17 @@ public class JsonUtils {
             throw new IllegalArgumentException();
         }
 
-        FileReader fr = null;
+        Reader r = null;
         try {
             Gson gson = new Gson();
-            fr = new FileReader(jsonFile);
-            return gson.fromJson(fr, String[].class);
+            r = new InputStreamReader(new FileInputStream(jsonFile), Charset.forName("UTF-8"));
+            return gson.fromJson(r, String[].class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (fr != null) {
+            if (r != null) {
                 try {
-                    fr.close();
+                    r.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -80,19 +83,19 @@ public class JsonUtils {
             throw new IllegalArgumentException();
         }
 
-        FileReader fr = null;
+        Reader r = null;
         Gson gson = new Gson();
         List<String> list = new LinkedList<String>();
         for (int i = 0; i < jsonFiles.length; i++) {
             try {
-                fr = new FileReader(jsonFiles[i]);
-                list.addAll(Arrays.asList(gson.fromJson(fr, String[].class)));
+                r = new InputStreamReader(new FileInputStream(jsonFiles[i]), Charset.forName("UTF-8"));
+                list.addAll(Arrays.asList(gson.fromJson(r, String[].class)));
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                if (fr != null) {
+                if (r != null) {
                     try {
-                        fr.close();
+                        r.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
