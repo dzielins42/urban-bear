@@ -110,7 +110,7 @@ public class BasicPantheonGenerator implements PantheonGenerator<BasicPantheonGe
         Arrays.fill(probabilities, 1.0d);
         for (Domain domain : domains) {
             for (int i = 0; i < probabilities.length; i++) {
-                probabilities[i] *= domain.getAlignmentProbabilities().getProbabilities()[i];
+                probabilities[i] *= domain.getAlignmentProbabilities().getProbabilities().get(i);
             }
         }
 

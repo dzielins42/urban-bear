@@ -1,5 +1,7 @@
 package pl.dzielins42.dmtools.generator.name;
 
+import java.util.List;
+
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 
@@ -21,9 +23,9 @@ public class ProbabilityNameGenerator implements NameGenerator {
     public long getPossibilitiesCount() {
         int sum = 0;
 
-        NameGenerator[] generators = elements.getElements();
-        for (int i = 0; i < generators.length; i++) {
-            sum += generators[i].getPossibilitiesCount();
+        List<NameGenerator> generators = elements.getElements();
+        for (NameGenerator ng : generators) {
+            sum += ng.getPossibilitiesCount();
         }
 
         return sum;

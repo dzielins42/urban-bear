@@ -1,0 +1,8 @@
+city_demographics_class_max_level				max level of character per city type per class
+city_types_gp_limits							most expensive item to purchase per city type
+city_types_magic_resources						percent of city wealth in magic resources per city type
+city_types_probabilities						probability of given city type
+city_types_unabsorbed_ip						percent of unabsorbed influence points per city type
+structure_types_probabilities					probability of given structure with given type per ward type
+ward_structures_distributions					max and min number of structures per acre per city type per ward type
+ward_types_probabilities						probability of given ward type per city type

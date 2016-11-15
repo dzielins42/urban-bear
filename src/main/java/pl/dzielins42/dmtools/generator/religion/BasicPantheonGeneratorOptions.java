@@ -1,5 +1,7 @@
 package pl.dzielins42.dmtools.generator.religion;
 
+import java.util.List;
+
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
 import pl.dzielins42.dmtools.generator.name.CharacterNameGenerator;
 import pl.dzielins42.dmtools.generator.name.NameGenerator;
@@ -58,7 +60,7 @@ public class BasicPantheonGeneratorOptions extends GeneratorOptions {
         this.domainsProbability = domainsProbability;
     }
 
-    public Domain[] getDomains() {
+    public List<Domain> getDomains() {
         return getDomainsProbability().getElements();
     }
 

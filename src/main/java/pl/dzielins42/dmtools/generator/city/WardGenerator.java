@@ -3,6 +3,8 @@ package pl.dzielins42.dmtools.generator.city;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.javatuples.Pair;
+
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.Ward;
 import pl.dzielins42.dmtools.model.city.WardBuilding;
@@ -44,11 +46,11 @@ public class WardGenerator {
     }
 
     private WardBuilding generateWardBuilding(Ward.Type wardType, CityGeneratorOptions options) {
-        ProbabilityDistributionTable<WardBuilding.TypeStyleTuple> probabilities = options.getStructureTypesProbabilities()
+        ProbabilityDistributionTable<Pair<WardBuilding.Style,WardBuilding.Type>> probabilities = options.getStructureTypesProbabilities()
                 .get(wardType);
-        WardBuilding.TypeStyleTuple typeStyleTuple = probabilities.getRandom(options.getRandom());
+        Pair<WardBuilding.Style,WardBuilding.Type> styleTypePair = probabilities.getRandom(options.getRandom());
 
-        return new WardBuilding(typeStyleTuple.getSecond(), typeStyleTuple.getFirst());
+        return new WardBuilding(styleTypePair.getValue0(),styleTypePair.getValue1());
     }
 
 }

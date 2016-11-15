@@ -38,4 +38,9 @@ public class MinMaxValues<T extends Comparable<T>> {
         this.max = max;
     }
 
+    @Override
+    public String toString() {
+        return "MinMaxValues [min=" + min + ", max=" + max + "]";
+    }
+
 }

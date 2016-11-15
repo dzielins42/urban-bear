@@ -2,6 +2,8 @@ package pl.dzielins42.dmtools.generator.city;
 
 import java.util.EnumMap;
 
+import org.javatuples.Pair;
+
 import com.google.common.collect.Table;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
@@ -19,7 +21,7 @@ public class CityGeneratorOptions extends GeneratorOptions {
     private ProbabilityDistributionTable<City.Type> cityTypesProbabilities;
     private EnumMap<City.Type, ProbabilityDistributionTable<Ward.Type>> wardTypesProbabilities;
     private Table<Ward.Type, City.Type, IntMinMaxValues> wardStructuresDistributions;
-    private EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> structureTypesProbabilities;
+    private EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style,WardBuilding.Type>>> structureTypesProbabilities;
     private EnumMap<City.Type, Double> cityTypesGpLimits;
     private EnumMap<City.Type, Double> cityTypesUnabsorbedInfluencePoints;
     private EnumMap<City.Type, Double> cityTypesMagicalResources;
@@ -53,12 +55,12 @@ public class CityGeneratorOptions extends GeneratorOptions {
         this.wardStructuresDistributions = wardStructuresDistributions;
     }
 
-    public EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> getStructureTypesProbabilities() {
+    public EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style,WardBuilding.Type>>> getStructureTypesProbabilities() {
         return structureTypesProbabilities;
     }
 
     public void setStructureTypesProbabilities(
-            EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> structureTypesProbabilities) {
+            EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style,WardBuilding.Type>>> structureTypesProbabilities) {
         this.structureTypesProbabilities = structureTypesProbabilities;
     }
 
@@ -98,7 +100,7 @@ public class CityGeneratorOptions extends GeneratorOptions {
         return getWardStructuresDistributions().get(wardType, cityType);
     }
 
-    public WardBuilding.TypeStyleTuple getRandomStructureType(Ward.Type wardType) {
+    public Pair<WardBuilding.Style,WardBuilding.Type> getRandomStructureType(Ward.Type wardType) {
         return getStructureTypesProbabilities().get(wardType).getRandom(getRandom());
     }
 

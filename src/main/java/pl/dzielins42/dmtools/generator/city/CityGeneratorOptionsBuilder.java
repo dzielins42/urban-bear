@@ -4,14 +4,20 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.javatuples.Pair;
 
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.Table;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
@@ -28,7 +34,7 @@ public class CityGeneratorOptionsBuilder {
     private ProbabilityDistributionTable<City.Type> cityTypesProbabilities;
     private EnumMap<City.Type, ProbabilityDistributionTable<Ward.Type>> wardTypesProbabilities;
     private Table<Ward.Type, City.Type, IntMinMaxValues> wardStructuresDistributions;
-    private EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> structureTypesProbabilities;
+    private EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style, WardBuilding.Type>>> structureTypesProbabilities;
     private EnumMap<City.Type, Double> cityTypesGpLimits;
     private EnumMap<City.Type, Double> cityTypesUnabsorbedInfluencePoints;
     private EnumMap<City.Type, Double> cityTypesMagicalResources;
@@ -73,9 +79,13 @@ public class CityGeneratorOptionsBuilder {
         try {
             Gson gson = new Gson();
             fr = new FileReader(file);
-            Type type = new TypeToken<ProbabilityDistributionTable<City.Type>>() {
+            Type type = new TypeToken<Map<City.Type, Double>>() {
+                private static final long serialVersionUID = -6756787428428024271L;
             }.getType();
-            pd = gson.fromJson(fr, type);
+            Map<City.Type, Double> m = gson.fromJson(fr, type);
+            if (m != null && !m.isEmpty()) {
+                pd = new ProbabilityDistributionTable<City.Type>(m);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -107,14 +117,15 @@ public class CityGeneratorOptionsBuilder {
         try {
             Gson gson = new Gson();
             fr = new FileReader(file);
-            LinkedHashMap<City.Type, ProbabilityDistributionTable<Ward.Type>> lhm;
-            Type type = new TypeToken<LinkedHashMap<City.Type, ProbabilityDistributionTable<Ward.Type>>>() {
+            Type type = new TypeToken<Map<City.Type,Map<Ward.Type,Double>>>() {
+                private static final long serialVersionUID = -1091771428115745077L;
             }.getType();
-            lhm = gson.fromJson(fr, type);
-            if (lhm != null) {
+            Map<City.Type,Map<Ward.Type,Double>> m;
+            m = gson.fromJson(fr, type);
+            if (m != null) {
                 em = new EnumMap<City.Type, ProbabilityDistributionTable<Ward.Type>>(City.Type.class);
                 for (City.Type ct : City.Type.values()) {
-                    em.put(ct, lhm.get(ct));
+                    em.put(ct, new ProbabilityDistributionTable<Ward.Type>(m.get(ct)));
                 }
             }
         } catch (Exception e) {
@@ -148,13 +159,16 @@ public class CityGeneratorOptionsBuilder {
         try {
             Gson gson = new Gson();
             fr = new FileReader(file);
-            IntMinMaxValues[][] a;
-            a = gson.fromJson(fr, IntMinMaxValues[][].class);
-            if (a != null) {
+            Map<City.Type, Map<Ward.Type, IntMinMaxValues>> m;
+            Type type = new TypeToken<Map<City.Type, Map<Ward.Type, IntMinMaxValues>>>() {
+                private static final long serialVersionUID = -9132635200807902047L;
+            }.getType();
+            m = gson.fromJson(fr, type);
+            if (m != null && !m.isEmpty()) {
                 t = ArrayTable.create(Arrays.asList(Ward.Type.values()), Arrays.asList(City.Type.values()));
                 for (Ward.Type wt : Ward.Type.values()) {
                     for (City.Type ct : City.Type.values()) {
-                        t.put(wt, ct, a[wt.ordinal()][ct.ordinal()]);
+                        t.put(wt, ct, m.get(ct).get(wt));
                     }
                 }
             }
@@ -176,7 +190,7 @@ public class CityGeneratorOptionsBuilder {
     }
 
     public void setStructureTypesProbabilities(
-            EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> structureTypesProbabilities) {
+            EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style, WardBuilding.Type>>> structureTypesProbabilities) {
         this.structureTypesProbabilities = structureTypesProbabilities;
     }
 
@@ -186,18 +200,33 @@ public class CityGeneratorOptionsBuilder {
         }
 
         FileReader fr = null;
-        EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> em = null;
+        EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style, WardBuilding.Type>>> em = null;
         try {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().create();
             fr = new FileReader(file);
-            LinkedHashMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>> lhm;
-            Type type = new TypeToken<LinkedHashMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>>>() {
+            Type type = new TypeToken<Map<Ward.Type, Map<WardBuilding.Type, Map<WardBuilding.Style, Double>>>>() {
+                private static final long serialVersionUID = 8342343019155386549L;
             }.getType();
-            lhm = gson.fromJson(fr, type);
-            if (lhm != null) {
-                em = new EnumMap<Ward.Type, ProbabilityDistributionTable<WardBuilding.TypeStyleTuple>>(Ward.Type.class);
-                for (Ward.Type ct : Ward.Type.values()) {
-                    em.put(ct, lhm.get(ct));
+            Map<Ward.Type, Map<WardBuilding.Type, Map<WardBuilding.Style, Double>>> m = gson.fromJson(fr, type);
+            if (m != null && !m.isEmpty()) {
+                List<Pair<WardBuilding.Style, WardBuilding.Type>> elements = new ArrayList<Pair<WardBuilding.Style, WardBuilding.Type>>(
+                        WardBuilding.Style.values().length * WardBuilding.Type.values().length);
+                for (WardBuilding.Style wbs : WardBuilding.Style.values()) {
+                    for (WardBuilding.Type wbt : WardBuilding.Type.values()) {
+                        elements.add(new Pair<WardBuilding.Style, WardBuilding.Type>(wbs, wbt));
+                    }
+                }
+                List<Double> values;
+                em = new EnumMap<Ward.Type, ProbabilityDistributionTable<Pair<WardBuilding.Style, WardBuilding.Type>>>(
+                        Ward.Type.class);
+                for (Ward.Type wt : Ward.Type.values()) {
+                    values = new ArrayList<Double>(WardBuilding.Style.values().length * WardBuilding.Type.values().length);
+                    for (WardBuilding.Style wbs : WardBuilding.Style.values()) {
+                        for (WardBuilding.Type wbt : WardBuilding.Type.values()) {
+                            values.add(m.get(wt).get(wbt).get(wbs));
+                        }
+                    }
+                    em.put(wt, new ProbabilityDistributionTable<>(elements, values));
                 }
             }
         } catch (Exception e) {
@@ -233,6 +262,7 @@ public class CityGeneratorOptionsBuilder {
             fr = new FileReader(file);
             LinkedHashMap<City.Type, Double> lhm;
             Type type = new TypeToken<LinkedHashMap<City.Type, Double>>() {
+                private static final long serialVersionUID = 7271405298010198405L;
             }.getType();
             lhm = gson.fromJson(fr, type);
             if (lhm != null) {
@@ -274,6 +304,7 @@ public class CityGeneratorOptionsBuilder {
             fr = new FileReader(file);
             LinkedHashMap<City.Type, Double> lhm;
             Type type = new TypeToken<LinkedHashMap<City.Type, Double>>() {
+                private static final long serialVersionUID = -4363663375389495375L;
             }.getType();
             lhm = gson.fromJson(fr, type);
             if (lhm != null) {
@@ -315,6 +346,7 @@ public class CityGeneratorOptionsBuilder {
             fr = new FileReader(file);
             LinkedHashMap<City.Type, Double> lhm;
             Type type = new TypeToken<LinkedHashMap<City.Type, Double>>() {
+                private static final long serialVersionUID = -3121484466580675833L;
             }.getType();
             lhm = gson.fromJson(fr, type);
             if (lhm != null) {
@@ -354,13 +386,16 @@ public class CityGeneratorOptionsBuilder {
         try {
             Gson gson = new Gson();
             fr = new FileReader(file);
-            IntProbabilityDistributionTable[][] a;
-            a = gson.fromJson(fr, IntProbabilityDistributionTable[][].class);
-            if (a != null) {
+            Map<City.Type, Map<CharacterClass, Map<Integer, Double>>> m;
+            Type type = new TypeToken<Map<City.Type, Map<CharacterClass, Map<Integer, Double>>>>() {
+                private static final long serialVersionUID = 8630640637108522310L;
+            }.getType();
+            m = gson.fromJson(fr, type);
+            if (m != null && !m.isEmpty()) {
                 t = ArrayTable.create(Arrays.asList(City.Type.values()), Arrays.asList(CharacterClass.values()));
                 for (City.Type ct : City.Type.values()) {
                     for (CharacterClass cc : CharacterClass.values()) {
-                        t.put(ct, cc, a[ct.ordinal()][cc.ordinal()]);
+                        t.put(ct, cc, new IntProbabilityDistributionTable(m.get(ct).get(cc)));
                     }
                 }
             }
