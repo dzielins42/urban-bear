@@ -26,9 +26,19 @@ public class CityGeneratorOptions extends GeneratorOptions {
     private EnumMap<City.Type, Double> cityTypesUnabsorbedInfluencePoints;
     private EnumMap<City.Type, Double> cityTypesMagicalResources;
     private Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics;
+    private EnumMap<City.Type, Integer> cityDemographicsMaxLevelRollsNumber;
+    private EnumMap<City.Type,IntMinMaxValues> powerCenterNumber;
 
     public CityGeneratorOptions(RandomGenerator random) {
         super(random);
+    }
+
+    public EnumMap<City.Type, IntMinMaxValues> getPowerCenterNumber() {
+        return powerCenterNumber;
+    }
+
+    public void setPowerCenterNumber(EnumMap<City.Type, IntMinMaxValues> powerCenterNumber) {
+        this.powerCenterNumber = powerCenterNumber;
     }
 
     public ProbabilityDistributionTable<City.Type> getCityTypesProbabilities() {
@@ -122,6 +132,14 @@ public class CityGeneratorOptions extends GeneratorOptions {
 
     public void setCityDemographics(Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics) {
         this.cityDemographics = cityDemographics;
+    }
+
+    public EnumMap<City.Type, Integer> getCityDemographicsMaxLevelRollsNumber() {
+        return cityDemographicsMaxLevelRollsNumber;
+    }
+
+    public void setCityDemographicsMaxLevelRollsNumber(EnumMap<City.Type, Integer> cityDemographicsMaxLevelRollsNumber) {
+        this.cityDemographicsMaxLevelRollsNumber = cityDemographicsMaxLevelRollsNumber;
     }
 
     // TODO common barbarian, monk classes

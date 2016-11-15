@@ -72,6 +72,4 @@ public class CityDemographics {
         return "CityDemographics [demographics=" + demographics + "]";
     }
 
-    // TODO validate city/city_demographics_class_max_level
-
 }

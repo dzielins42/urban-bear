@@ -12,9 +12,6 @@ import pl.dzielins42.dmtools.util.data.IntProbabilityDistributionTable;
 
 public class CityDemographicsGenerator {
 
-    // TODO should it be customizable?
-    private static final int[] numberOfRolls = { 1, 1, 1, 1, 1, 2, 3, 4 };
-
     public CityDemographics generate(City.Type cityType, int population, CityGeneratorOptions options) {
         if (options == null || population <= 0 || cityType == null || options.getCityDemographics() == null) {
             throw new IllegalArgumentException();
@@ -31,7 +28,8 @@ public class CityDemographicsGenerator {
 
         // For each class generate highest level NPCs
         int maxLvl = 0;
-        for (int i = 0; i < numberOfRolls[cityType.ordinal()]; i++) {
+        int numberOfRolls = options.getCityDemographicsMaxLevelRollsNumber().get(cityType);
+        for (int i = 0; i < numberOfRolls; i++) {
             for (CharacterClass cc : CharacterClass.values()) {
                 if (remainingPopulation <= 0) {
                     break;

@@ -1,9 +1,9 @@
 package pl.dzielins42.dmtools.generator.city;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.CityDemographics;
 import pl.dzielins42.dmtools.model.city.Ward;
@@ -24,7 +24,7 @@ public class CityGenerator {
     }
 
     public City generate(City.Type cityType, CityGeneratorOptions options) {
-        // Generate population and area based on city type
+        // TODO generate population and area based on city type
         return generate(cityType, 80, 10.0d, options);
     }
 
@@ -53,10 +53,28 @@ public class CityGenerator {
         // Get demographics
         CityDemographics demographics = cityDemographicsGenerator.generate(cityType, population, options);
         // Get power centers
+        int powerCentersCount = options.getPowerCenterNumber().get(cityType).getMin()
+                + options.nextInt(options.getPowerCenterNumber().get(cityType).getMax()
+                        - options.getPowerCenterNumber().get(cityType).getMin() + 1);
         // Get influence points
-        // TODO need to generate demographics first
+        int influencePointsSum = getInfluencePointsSum(demographics);
 
         return new City(cityType, population, area, wards, gpLimit, magicalResources, demographics);
+    }
+
+    private int getInfluencePointsSum(CityDemographics demographics) {
+        float influencePointsSum = 0;
+        for (CharacterClass cc : CharacterClass.values()) {
+            int highestLevel = demographics.getHighestLevel(cc);
+            for (int l = highestLevel; highestLevel > 0; highestLevel--) {
+                // Each level of PC classes, adept and noble counts as 1 IP
+                // Each level of commoner, expert and warrior count as 1/2 IP
+                influencePointsSum += ((cc == CharacterClass.COMMONER || cc == CharacterClass.EXPERT
+                        || cc == CharacterClass.WARRIOR) ? 0.5f : 1.0f) * (l * demographics.numberOf(cc, l));
+            }
+        }
+
+        return (int) influencePointsSum;
     }
 
     private double getGpLimit(City.Type cityType, CityGeneratorOptions options) {
@@ -74,20 +92,22 @@ public class CityGenerator {
     }
 
     private double[] assignAreasToWards(double cityArea, City.Type cityType, CityGeneratorOptions options) {
-        // Calculate minimum area based on structures distribution in wards
-        // Ward area cannot be smaller than 0 or some wards may not have
-        // structures
-        double minWardArea = Double.MAX_VALUE;
+        // Calculate minimum area based on structures distribution in wards for
+        // given type of city
+        // Ward area cannot be smaller than area needed for at least 1 building
+        // Get max min structures/acre
+        int maxMinStructuresPerAcre = Integer.MIN_VALUE;
         for (Ward.Type wt : Ward.Type.values()) {
-            int tmp;
-            tmp = options.getStructuresDistribution(cityType, wt).getMin();
-            if (tmp <= 0) {
-                continue;
-            }
-            if (minWardArea > (1.0d / tmp)) {
-                minWardArea = (1.0d / tmp);
+            if (maxMinStructuresPerAcre < options.getStructuresDistribution(cityType, wt).getMin()) {
+                maxMinStructuresPerAcre = options.getStructuresDistribution(cityType, wt).getMin();
             }
         }
+        // Calculate the value
+        double minWardArea = 1.0d / maxMinStructuresPerAcre;
+        // Global minWardArea is a little simplification because each ward type
+        // may have other min area, however, this value is lower limit - there
+        // cannot be smaller ward, this ensures that each ward will area for at
+        // least one structure
         // Calculate maximum number of wards
         int maxWardsCount = (int) Math.floor(cityArea / minWardArea);
         // Get number of wards

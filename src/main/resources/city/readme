@@ -1,4 +1,6 @@
 city_demographics_class_max_level				max level of character per city type per class
+city_demographics_class_number_of_rolls			numbers of rolls for max level of character per city type
+city_powercenter_number							max and min number of power centers per city type
 city_types_gp_limits							most expensive item to purchase per city type
 city_types_magic_resources						percent of city wealth in magic resources per city type
 city_types_probabilities						probability of given city type

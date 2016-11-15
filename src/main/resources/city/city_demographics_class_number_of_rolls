@@ -1,0 +1,10 @@
+{
+   "THORP":1,
+   "HAMLET":1,
+   "VILLAGE":1,
+   "SMALL_TOWN":1,
+   "LARGE_TOWN":1,
+   "SMALL_CITY":2,
+   "LARGE_CITY":3,
+   "METROPOLIS":4
+}

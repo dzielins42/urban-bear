@@ -39,6 +39,8 @@ public class CityGeneratorOptionsBuilder {
     private EnumMap<City.Type, Double> cityTypesUnabsorbedInfluencePoints;
     private EnumMap<City.Type, Double> cityTypesMagicalResources;
     private Table<City.Type, CharacterClass, IntProbabilityDistributionTable> cityDemographics;
+    private EnumMap<City.Type, Integer> cityDemographicsMaxLevelRollsNumber;
+    private EnumMap<City.Type,IntMinMaxValues> powerCenterNumber;
 
     public CityGeneratorOptions build() {
         // Validate
@@ -57,12 +59,97 @@ public class CityGeneratorOptionsBuilder {
         cgo.setCityTypesUnabsorbedInfluencePoints(cityTypesUnabsorbedInfluencePoints);
         cgo.setCityTypesMagicalResources(cityTypesMagicalResources);
         cgo.setCityDemographics(cityDemographics);
+        cgo.setCityDemographicsMaxLevelRollsNumber(cityDemographicsMaxLevelRollsNumber);
+        cgo.setPowerCenterNumber(powerCenterNumber);
 
         return cgo;
     }
 
     public void setRandom(RandomGenerator random) {
         this.random = random;
+    }
+
+    public void setPowerCenterNumber(EnumMap<City.Type, IntMinMaxValues> powerCenterNumber) {
+        this.powerCenterNumber = powerCenterNumber;
+    }
+    
+    public void loadPowerCenterNumber(File file) {
+        if (file == null) {
+            throw new IllegalArgumentException();
+        }
+
+        FileReader fr = null;
+        EnumMap<City.Type, IntMinMaxValues> em = null;
+        try {
+            Gson gson = new Gson();
+            fr = new FileReader(file);
+            Map<City.Type,IntMinMaxValues> m;
+            Type type = new TypeToken<Map<City.Type,IntMinMaxValues>>() {
+                private static final long serialVersionUID = -6756787428428024271L;
+            }.getType();
+            m = gson.fromJson(fr, type);
+            if (m != null && !m.isEmpty()) {
+                em = new EnumMap<City.Type, IntMinMaxValues>(City.Type.class);
+                for (City.Type ct : City.Type.values()) {
+                    em.put(ct, m.get(ct));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (em != null) {
+            setPowerCenterNumber(em);
+        }
+    }
+
+    public void setCityDemographicsMaxLevelRollsNumber(EnumMap<City.Type, Integer> cityDemographicsMaxLevelRollsNumber) {
+        this.cityDemographicsMaxLevelRollsNumber = cityDemographicsMaxLevelRollsNumber;
+    }
+
+    public void loadCityDemographicsMaxLevelRollsNumber(File file) {
+        if (file == null) {
+            throw new IllegalArgumentException();
+        }
+
+        FileReader fr = null;
+        EnumMap<City.Type, Integer> em = null;
+        try {
+            Gson gson = new Gson();
+            fr = new FileReader(file);
+            Type type = new TypeToken<Map<City.Type, Integer>>() {
+                private static final long serialVersionUID = -1091771428115745077L;
+            }.getType();
+            Map<City.Type, Integer> m = gson.fromJson(fr, type);
+            if (m != null) {
+                em = new EnumMap<City.Type, Integer>(City.Type.class);
+                for (City.Type ct : City.Type.values()) {
+                    em.put(ct, m.get(ct));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (em != null) {
+            setCityDemographicsMaxLevelRollsNumber(em);
+        }
     }
 
     public void setCityTypesProbabilities(ProbabilityDistributionTable<City.Type> cityTypesProbabilities) {
@@ -117,10 +204,10 @@ public class CityGeneratorOptionsBuilder {
         try {
             Gson gson = new Gson();
             fr = new FileReader(file);
-            Type type = new TypeToken<Map<City.Type,Map<Ward.Type,Double>>>() {
+            Type type = new TypeToken<Map<City.Type, Map<Ward.Type, Double>>>() {
                 private static final long serialVersionUID = -1091771428115745077L;
             }.getType();
-            Map<City.Type,Map<Ward.Type,Double>> m;
+            Map<City.Type, Map<Ward.Type, Double>> m;
             m = gson.fromJson(fr, type);
             if (m != null) {
                 em = new EnumMap<City.Type, ProbabilityDistributionTable<Ward.Type>>(City.Type.class);
