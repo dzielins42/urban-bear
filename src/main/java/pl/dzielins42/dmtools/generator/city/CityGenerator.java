@@ -3,10 +3,10 @@ package pl.dzielins42.dmtools.generator.city;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.CityDemographics;
 import pl.dzielins42.dmtools.model.city.Ward;
+import pl.dzielins42.dmtools.model.enumeration.CharacterClass;
 
 public class CityGenerator {
 

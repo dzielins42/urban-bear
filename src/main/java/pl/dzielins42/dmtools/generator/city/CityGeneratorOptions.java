@@ -7,10 +7,10 @@ import org.javatuples.Pair;
 import com.google.common.collect.Table;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
-import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.Ward;
 import pl.dzielins42.dmtools.model.city.WardBuilding;
+import pl.dzielins42.dmtools.model.enumeration.CharacterClass;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 import pl.dzielins42.dmtools.util.RandomGenerator;
 import pl.dzielins42.dmtools.util.data.IntMinMaxValues;

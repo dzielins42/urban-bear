@@ -1,6 +1,6 @@
 package pl.dzielins42.dmtools.model.religion;
 
-import pl.dzielins42.dmtools.model.Alignment;
+import pl.dzielins42.dmtools.model.enumeration.Alignment;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 
 /**

@@ -19,10 +19,10 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import pl.dzielins42.dmtools.model.CharacterClass;
 import pl.dzielins42.dmtools.model.city.City;
 import pl.dzielins42.dmtools.model.city.Ward;
 import pl.dzielins42.dmtools.model.city.WardBuilding;
+import pl.dzielins42.dmtools.model.enumeration.CharacterClass;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 import pl.dzielins42.dmtools.util.RandomGenerator;
 import pl.dzielins42.dmtools.util.data.IntMinMaxValues;

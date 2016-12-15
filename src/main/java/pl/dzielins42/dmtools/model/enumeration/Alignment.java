@@ -1,4 +1,4 @@
-package pl.dzielins42.dmtools.model;
+package pl.dzielins42.dmtools.model.enumeration;
 
 public enum Alignment {
 

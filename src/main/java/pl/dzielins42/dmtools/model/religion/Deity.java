@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.google.common.base.Joiner;
 
-import pl.dzielins42.dmtools.model.Alignment;
-import pl.dzielins42.dmtools.model.Gender;
+import pl.dzielins42.dmtools.model.enumeration.Alignment;
+import pl.dzielins42.dmtools.model.enumeration.Gender;
 
 /**
  * Represents single deity in a religious system.

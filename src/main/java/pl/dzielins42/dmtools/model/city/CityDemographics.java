@@ -5,7 +5,7 @@ import java.util.Map;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
-import pl.dzielins42.dmtools.model.CharacterClass;
+import pl.dzielins42.dmtools.model.enumeration.CharacterClass;
 
 public class CityDemographics {
 

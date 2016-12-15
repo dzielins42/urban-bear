@@ -1,7 +1,7 @@
 package pl.dzielins42.dmtools.generator.name;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
-import pl.dzielins42.dmtools.model.Gender;
+import pl.dzielins42.dmtools.model.enumeration.Gender;
 
 /**
  * {@link NameGenerator} implementation which uses arrays for each

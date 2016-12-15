@@ -4,7 +4,7 @@ import java.util.EnumMap;
 
 import pl.dzielins42.dmtools.generator.GeneratorOptions;
 import pl.dzielins42.dmtools.generator.GeneratorStatistics;
-import pl.dzielins42.dmtools.model.Gender;
+import pl.dzielins42.dmtools.model.enumeration.Gender;
 
 public class CharacterNameGenerator implements GeneratorStatistics {
 

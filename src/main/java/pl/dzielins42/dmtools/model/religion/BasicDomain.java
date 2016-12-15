@@ -2,7 +2,7 @@ package pl.dzielins42.dmtools.model.religion;
 
 import com.google.common.base.Strings;
 
-import pl.dzielins42.dmtools.model.Alignment;
+import pl.dzielins42.dmtools.model.enumeration.Alignment;
 import pl.dzielins42.dmtools.util.ProbabilityDistributionTable;
 
 public class BasicDomain implements Domain {
